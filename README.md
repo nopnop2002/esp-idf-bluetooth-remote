@@ -18,7 +18,7 @@ This is to prevent battery consumption.
 If you turn the power off and then on again, it will wait for pairing again.   
 
 - One button product   
- A one-button products report two notifications: button press and button release.
+ A one-button products report two notifications: button press down and button release.
 ```
 I (600588) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
 I (600598) GATT_CLIENT: event.NotificationLength=2
@@ -43,7 +43,7 @@ I (42848) GATT_CLIENT: event.NotificationValue=0x200 // button2 press
 I (43678) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
 I (43688) GATT_CLIENT: event.NotificationLength=2
 I (43688) GATT_CLIENT: event.NotificationValue=0x0 // button release
-
+```
 
 # Software requirements
 ESP-IDF V5.0 or later.   
