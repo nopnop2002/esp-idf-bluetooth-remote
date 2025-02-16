@@ -5,7 +5,7 @@ Bluetooth remote control shutter driver for esp-idf.
 
 These are selfie devices that use a Bluetooth remote control to trigger the shutter on your phone.   
 These act as GATT servers.   
-These can be obtained for around $2.   
+These are very cheap and available for less than $1.   
 This project is a GATT client that communicates with these devices.   
 This project is based on [this](https://github.com/espressif/esp-idf/tree/master/examples/bluetooth/bluedroid/ble/gatt_client) example.
 
