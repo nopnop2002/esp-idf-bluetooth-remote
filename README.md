@@ -1,5 +1,5 @@
 # esp-idf-bluetooth-remote
-Bluetooth remote control shutter driver for esp-idf.   
+Communication demonstration with a selfie device that releases the shutter of a mobile phone.   
 
 ![Image](https://github.com/user-attachments/assets/9e4b833f-5c0f-499b-9aa9-a3bb69f43309)
 
