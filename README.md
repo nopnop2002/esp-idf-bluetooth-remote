@@ -12,6 +12,8 @@ This project is based on [this](https://github.com/espressif/esp-idf/tree/master
 __Note__   
 It's not the original usage, but rather a hacky usage.   
 If the specifications of the product change in the future, there is a possibility that it will not work properly.   
+There are also many cloned products.   
+There is no guarantee that it will work with all products.   
 
 # About AB Shutter3
 These devices have the remote device name ```AB Shutter3```.   
