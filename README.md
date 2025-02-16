@@ -17,7 +17,7 @@ The power will turn off automatically if there is no operation for a certain per
 This is to prevent battery consumption.   
 If you turn the power off and then on again, it will wait for pairing again.   
 
-- One button product
+- One button product   
  A one-button products report two notifications: button press and button release.
 ```
 I (600588) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
@@ -29,7 +29,7 @@ I (601718) GATT_CLIENT: event.NotificationLength=2
 I (601718) GATT_CLIENT: event.NotificationValue=0x0 // button release
 ```
 
-- Two button product
+- Two button product   
  A two-button product reports three notifications: button 1 press down, button 2 press down, and button release.
 ```
 I (3988) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
