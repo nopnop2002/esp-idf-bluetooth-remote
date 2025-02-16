@@ -467,15 +467,18 @@ static void esp_gap_cb(esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param_t *par
 						esp_ble_gap_stop_scanning();
 						esp_ble_gattc_open(gl_profile_tab[PROFILE_A_APP_ID].gattc_if, scan_result->scan_rst.bda, scan_result->scan_rst.ble_addr_type, true);
 						ESP_LOGI(GATTC_TAG, "Connected to the remote device");
+						NOTIFICATION_t Notification;
+						Notification.NotificationEvent = ESP_GAP_BLE_SCAN_RESULT_EVT;
+						xQueueSendFromISR(xQueueEvent, &Notification, NULL);
 					}
 				}
 			}
 			break;
 		case ESP_GAP_SEARCH_INQ_CMPL_EVT:
 			ESP_LOGD(GATTC_TAG, "ESP_GAP_SEARCH_INQ_CMPL_EVT");
-        	NOTIFICATION_t Notification;
-   	    	Notification.NotificationEvent = ESP_GAP_SEARCH_INQ_CMPL_EVT;
-        	xQueueSendFromISR(xQueueEvent, &Notification, NULL);
+			NOTIFICATION_t Notification;
+			Notification.NotificationEvent = ESP_GAP_SEARCH_INQ_CMPL_EVT;
+			xQueueSendFromISR(xQueueEvent, &Notification, NULL);
 			break;
 		default:
 			break;
@@ -625,9 +628,13 @@ void app_main(void)
 				break;
 			} else if (event.NotificationEvent == ESP_GATTC_DISCONNECT_EVT) { // 0x29
 				ESP_LOGW(GATTC_TAG, "ESP_GATTC_DISCONNECT_EVT");
+				ESP_LOGW(GATTC_TAG, "Disconnected from the remote device");
 				break;
+			} else if (event.NotificationEvent == ESP_GAP_BLE_SCAN_RESULT_EVT) { // 0x03
+				ESP_LOGW(GATTC_TAG, "ESP_GAP_BLE_SCAN_RESULT_EVT");
+				ESP_LOGW(GATTC_TAG, "Connected to the remote device");
 			} else if (event.NotificationEvent == ESP_GATTC_NOTIFY_EVT) { // 0x0A
-				ESP_LOGI(GATTC_TAG, "ESP_GATTC_NOTIFY_EVT");
+				ESP_LOGW(GATTC_TAG, "ESP_GATTC_NOTIFY_EVT");
 				ESP_LOGI(GATTC_TAG, "event.NotificationLength=%d", event.NotificationLength);
 				ESP_LOGI(GATTC_TAG, "event.NotificationValue=0x%"PRIx32, event.NotificationValue);
 			}
