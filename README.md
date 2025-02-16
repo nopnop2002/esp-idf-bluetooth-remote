@@ -55,7 +55,6 @@ I (43678) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
 I (43688) GATT_CLIENT: event.NotificationLength=2
 I (43688) GATT_CLIENT: event.NotificationValue=0x0 // button release
 ```
-
 This product notify 1 bytes.   
 ```
 I (2472728) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
