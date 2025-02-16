@@ -40,8 +40,8 @@ I (601718) GATT_CLIENT: event.NotificationValue=0x0 // button release
 
 - Two button product   
  A two-button product reports three notifications: button 1 press down, button 2 press down, and button release.   
-The value and length of the notification varies by product.   
-This product notify 2 bytes.   
+ The value and length of the notification varies by product.   
+ This product notify 2 bytes.   
 ```
 I (3988) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
 I (3998) GATT_CLIENT: event.NotificationLength=2
@@ -55,7 +55,7 @@ I (43678) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
 I (43688) GATT_CLIENT: event.NotificationLength=2
 I (43688) GATT_CLIENT: event.NotificationValue=0x0 // button release
 ```
-This product notify 1 bytes.   
+ This product notify 1 bytes.   
 ```
 I (2472728) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
 I (2472738) GATT_CLIENT: event.NotificationLength=1
