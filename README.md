@@ -14,7 +14,7 @@ It's not the original usage, but rather a hacky usage.
 If the specifications of the product change in the future, there is a possibility that it will not work properly.   
 
 # About AB Shutter3
-These devices have the name ```AB Shutter3```.   
+These devices have the remote device name ```AB Shutter3```.   
 These are very cheap and available for less than $1.   
 When you turn on the power, it will wait for pairing.   
 When pairing with ESP32 is completed, an event will be notified according to the button.   
