@@ -26,17 +26,17 @@ This is to prevent battery consumption.
 If you turn the power off and then on again, it will wait for pairing again.   
 
 - One button product   
- A one-button products report two notifications: button press down and button release.   
-The value and length of the notification varies by product.   
-```
-I (600588) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
-I (600598) GATT_CLIENT: event.NotificationLength=2
-I (600598) GATT_CLIENT: event.NotificationValue=0x100 // button press
+	A one-button products report two notifications: button press down and button release.   
+	The value and length of the notification varies by product.   
+	```
+	I (600588) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
+	I (600598) GATT_CLIENT: event.NotificationLength=2
+	I (600598) GATT_CLIENT: event.NotificationValue=0x100 // button press
 
-I (601708) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
-I (601718) GATT_CLIENT: event.NotificationLength=2
-I (601718) GATT_CLIENT: event.NotificationValue=0x0 // button release
-```
+	I (601708) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
+	I (601718) GATT_CLIENT: event.NotificationLength=2
+	I (601718) GATT_CLIENT: event.NotificationValue=0x0 // button release
+	```
 
 - Two button product   
 	A two-button product reports three notifications: button 1 press down, button 2 press down, and button release.   
