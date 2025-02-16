@@ -134,6 +134,8 @@ static void gattc_profile_event_handler(esp_gattc_cb_event_t event, esp_gatt_if_
 			break;
 		}
 		ESP_LOGI(GATTC_TAG, "Open successfully, MTU %u", p_data->open.mtu);
+		Notification.NotificationEvent = ESP_GATTC_OPEN_EVT;
+		xQueueSendFromISR(xQueueEvent, &Notification, NULL);
 		break;
 	case ESP_GATTC_DIS_SRVC_CMPL_EVT:
 		ESP_LOGD(GATTC_TAG, "ESP_GATTC_DIS_SRVC_CMPL_EVT");
@@ -467,9 +469,6 @@ static void esp_gap_cb(esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param_t *par
 						esp_ble_gap_stop_scanning();
 						esp_ble_gattc_open(gl_profile_tab[PROFILE_A_APP_ID].gattc_if, scan_result->scan_rst.bda, scan_result->scan_rst.ble_addr_type, true);
 						ESP_LOGI(GATTC_TAG, "Connected to the remote device");
-						NOTIFICATION_t Notification;
-						Notification.NotificationEvent = ESP_GAP_BLE_SCAN_RESULT_EVT;
-						xQueueSendFromISR(xQueueEvent, &Notification, NULL);
 					}
 				}
 			}
@@ -630,8 +629,8 @@ void app_main(void)
 				ESP_LOGW(GATTC_TAG, "ESP_GATTC_DISCONNECT_EVT");
 				ESP_LOGW(GATTC_TAG, "Disconnected from the remote device");
 				break;
-			} else if (event.NotificationEvent == ESP_GAP_BLE_SCAN_RESULT_EVT) { // 0x03
-				ESP_LOGW(GATTC_TAG, "ESP_GAP_BLE_SCAN_RESULT_EVT");
+			} else if (event.NotificationEvent == ESP_GATTC_OPEN_EVT) { // 0x02
+				ESP_LOGW(GATTC_TAG, "ESP_GATTC_OPEN_EVT");
 				ESP_LOGW(GATTC_TAG, "Connected to the remote device");
 			} else if (event.NotificationEvent == ESP_GATTC_NOTIFY_EVT) { // 0x0A
 				ESP_LOGW(GATTC_TAG, "ESP_GATTC_NOTIFY_EVT");
