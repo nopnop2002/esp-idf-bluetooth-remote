@@ -6,9 +6,12 @@ Communication demonstration with a selfie device that releases the shutter of a 
 These are selfie devices that use a Bluetooth remote control to trigger the shutter on your phone.   
 These act as GATT servers.   
 This project is a GATT client that communicates with these devices.   
-This project is a GATT client that communicates with these devices.   
 You can control your ESP32 using these devices.   
 This project is based on [this](https://github.com/espressif/esp-idf/tree/master/examples/bluetooth/bluedroid/ble/gatt_client) example.
+
+__Note__   
+It's not the original usage, but rather a hacky usage.   
+If the specifications of the product change in the future, there is a possibility that it will not work properly.   
 
 # About AB Shutter3
 These devices have the name ```AB Shutter3```.   
