@@ -27,7 +27,7 @@ If you turn the power off and then on again, it will wait for pairing again.
 
 - One button product   
  A one-button products report two notifications: button press down and button release.   
-Notification values vary depending on the product.   
+The value and length of the notification varies by product.   
 ```
 I (600588) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
 I (600598) GATT_CLIENT: event.NotificationLength=2
@@ -40,7 +40,7 @@ I (601718) GATT_CLIENT: event.NotificationValue=0x0 // button release
 
 - Two button product   
  A two-button product reports three notifications: button 1 press down, button 2 press down, and button release.   
-Notification values vary depending on the product.   
+The value and length of the notification varies by product.   
 ```
 I (3988) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
 I (3998) GATT_CLIENT: event.NotificationLength=2
@@ -54,6 +54,17 @@ I (43678) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
 I (43688) GATT_CLIENT: event.NotificationLength=2
 I (43688) GATT_CLIENT: event.NotificationValue=0x0 // button release
 ```
+
+```
+I (2472728) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
+I (2472738) GATT_CLIENT: event.NotificationLength=1
+I (2472738) GATT_CLIENT: event.NotificationValue=0x20
+
+I (2473328) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
+I (2473338) GATT_CLIENT: event.NotificationLength=1
+I (2473338) GATT_CLIENT: event.NotificationValue=0x0
+```
+
 
 # Software requirements
 ESP-IDF V5.0 or later.   
