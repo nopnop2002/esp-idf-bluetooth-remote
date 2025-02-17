@@ -71,7 +71,7 @@ If you turn the power off and then on again, it will wait for pairing again.
 	I (2473338) GATT_CLIENT: event.NotificationValue=0x0
 	```
 
-Each device has a unique MAC address.   
+Each device has a unique Remote device address.   
 This allows you to communicate with specific devices.   
 ```
 I (3432) GATT_CLIENT: AB Shutter3
