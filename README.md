@@ -73,7 +73,6 @@ If you turn the power off and then on again, it will wait for pairing again.
 
 -  Remote device address   
 	Each device has a unique Remote device address.   
-	We can use this address to communicate with specific devices.   
 	```
 	I (3432) GATT_CLIENT: AB Shutter3
 	I (3432) GATT_CLIENT: Device found AB Shutter3
@@ -93,14 +92,6 @@ If you turn the power off and then on again, it will wait for pairing again.
 	I (3168) GATT_CLIENT: AB Shutter3
 	I (3168) GATT_CLIENT: Device found AB Shutter3
 	I (3268) GATT_CLIENT: Connected, conn_id 0, remote 2a:07:98:03:fc:55
-	```
-
-	We can use multiple devices if we can communicate with a specific device.   
-	```
-	ESP32#1 --- Remote Device ff:ff:11:94:a8:63
-	ESP32#2 --- Remote Device 2b:80:3c:28:ac:1a
-	ESP32#3 --- Remote Device 2a:07:98:03:91:d5
-	ESP32#4 --- Remote Device 2a:07:98:03:fc:55
 	```
 
 
