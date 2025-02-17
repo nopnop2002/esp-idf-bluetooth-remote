@@ -569,11 +569,11 @@ esp_err_t NVS_write_uint32(char * key, uint32_t value) {
 	}
 	ESP_LOGD(__FUNCTION__, "nvs_open Done");
 
-	ESP_LOGD(TAG, "NVS_write_int16 Writing [%s] to NVS ... ", key);
+	ESP_LOGD(__FUNCTION__, "NVS_write_uint32 Writing [%s] to NVS ... ", key);
 	err = nvs_set_u32(my_handle, key, value);
 	ESP_LOGD(__FUNCTION__, "nvs_set_u32 err=%d", err);
 	if (err == ESP_OK) {
-		ESP_LOGD(TAG, "NVS_write_int16 Done. [%s] = %d", key, value);
+		ESP_LOGD(__FUNCTION__, "NVS_write_uint32 Done. [%s] = %"PRIx32, key, value);
 		// Commit written value.
 		// After setting any values, nvs_commit() must be called to ensure changes are written
 		// to flash storage. Implementations may write to storage at other times,
