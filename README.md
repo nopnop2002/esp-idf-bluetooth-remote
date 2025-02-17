@@ -115,7 +115,7 @@ This project has no configuration items.
 
 # Write to NVS   
 This project records button information to NVS.   
-This allows you to find out which button was pressed in other projects.   
+By comparing the NVS value with the value reported by the device, we can tell which button was pressed.   
 - button 1 press down   
  The NVS key is ```AB_BUTTON1``` and the NVS value type is uint32_t.   
 
