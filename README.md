@@ -71,6 +71,28 @@ If you turn the power off and then on again, it will wait for pairing again.
 	I (2473338) GATT_CLIENT: event.NotificationValue=0x0
 	```
 
+Each device has a unique MAC address.   
+This allows you to communicate with specific devices.   
+```
+I (3432) GATT_CLIENT: AB Shutter3
+I (3432) GATT_CLIENT: Device found AB Shutter3
+I (5032) GATT_CLIENT: Connected, conn_id 0, remote ff:ff:11:94:a8:63
+
+
+I (13732) GATT_CLIENT: AB Shutter3
+I (13732) GATT_CLIENT: Device found AB Shutter3
+I (14202) GATT_CLIENT: Connected, conn_id 0, remote 2b:80:3c:28:ac:1a
+
+
+I (5522) GATT_CLIENT: AB Shutter3
+I (5522) GATT_CLIENT: Device found AB Shutter3
+I (5632) GATT_CLIENT: Connected, conn_id 0, remote 2a:07:98:03:91:d5
+
+
+I (3168) GATT_CLIENT: AB Shutter3
+I (3168) GATT_CLIENT: Device found AB Shutter3
+I (3268) GATT_CLIENT: Connected, conn_id 0, remote 2a:07:98:03:fc:55
+```
 
 # Software requirements
 ESP-IDF V5.0 or later.   
