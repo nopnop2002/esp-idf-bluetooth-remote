@@ -86,3 +86,16 @@ idf.py flash
 # Configuration   
 This project has no configuration items.   
 
+
+# Write to NVS   
+This project records button information to NVS.   
+This allows you to find out which button was pressed in other projects.   
+- button 1 press down   
+ The NVS key is ```AB_BUTTON1``` and the NVS value type is uint32_t.   
+
+- button 2 press down   
+ The NVS key is ```AB_BUTTON2``` and the NVS value type is uint32_t.   
+
+- button release   
+ The NVS key is ```AB_RELEASE``` and the NVS value type is uint32_t.   
+

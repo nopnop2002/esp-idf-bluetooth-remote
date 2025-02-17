@@ -14,6 +14,8 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <inttypes.h>
+#include <stdint.h>
+
 #include "nvs.h"
 #include "nvs_flash.h"
 
@@ -37,6 +39,10 @@
 #define PROFILE_NUM		 1
 #define PROFILE_A_APP_ID 0
 #define INVALID_HANDLE	 0
+
+static char *BUTTON1_PRESS = "AB_BUTTON1";
+static char *BUTTON2_PRESS = "AB_BUTTON2";
+static char *BUTTON_RELEASE = "AB_RELEASE";
 
 QueueHandle_t xQueueEvent;
 
@@ -545,6 +551,47 @@ static void esp_gattc_cb(esp_gattc_cb_event_t event, esp_gatt_if_t gattc_if, esp
 	} while (0);
 }
 
+esp_err_t NVS_write_uint32(char * key, uint32_t value) {
+	// Check key length
+	ESP_LOGD(__FUNCTION__, "NVS_KEY_NAME_MAX_SIZE=%d", NVS_KEY_NAME_MAX_SIZE);
+	if (strlen(key) > NVS_KEY_NAME_MAX_SIZE-1) {
+		ESP_LOGE(__FUNCTION__, "Maximal key length is %d", NVS_KEY_NAME_MAX_SIZE-1);
+		return ESP_ERR_INVALID_ARG;
+	}
+
+	// Open NVS
+	ESP_LOGD(__FUNCTION__, "Opening Non-Volatile Storage handle");
+	nvs_handle_t my_handle;
+	esp_err_t err = nvs_open("storage", NVS_READWRITE, &my_handle);
+	if (err != ESP_OK) {
+		ESP_LOGE(__FUNCTION__, "Error (%s) opening NVS handle", esp_err_to_name(err));
+		return ESP_FAIL;
+	}
+	ESP_LOGD(__FUNCTION__, "nvs_open Done");
+
+	ESP_LOGD(TAG, "NVS_write_int16 Writing [%s] to NVS ... ", key);
+	err = nvs_set_u32(my_handle, key, value);
+	ESP_LOGD(__FUNCTION__, "nvs_set_u32 err=%d", err);
+	if (err == ESP_OK) {
+		ESP_LOGD(TAG, "NVS_write_int16 Done. [%s] = %d", key, value);
+		// Commit written value.
+		// After setting any values, nvs_commit() must be called to ensure changes are written
+		// to flash storage. Implementations may write to storage at other times,
+		// but this is not guaranteed.
+		ESP_LOGD(__FUNCTION__, "Committing updates in NVS ... ");
+		err = nvs_commit(my_handle);
+		ESP_LOGD(__FUNCTION__, "nvs_commit err=%d", err);
+		if (err != ESP_OK) {
+			ESP_LOGE(__FUNCTION__, "Error (%s) commit!", esp_err_to_name(err));
+		}
+	} else {
+		ESP_LOGE(__FUNCTION__, "Error (%s) write!", esp_err_to_name(err));
+	}
+
+	nvs_close(my_handle);
+	return err;
+}
+
 void app_main(void)
 {
 	// Initialize NVS.
@@ -567,6 +614,10 @@ void app_main(void)
 		ESP_LOGE(GATTC_TAG, "%s initialize controller failed: %s", __func__, esp_err_to_name(ret));
 		return;
 	}
+
+	uint32_t button1Press = UINT32_MAX;
+	uint32_t button2Press = UINT32_MAX;
+	uint32_t buttonRelease = UINT32_MAX;
 
 	while(1) {
 		ESP_LOGI(GATTC_TAG, "Start esp_bt_controller_enable");
@@ -636,6 +687,22 @@ void app_main(void)
 				ESP_LOGW(GATTC_TAG, "ESP_GATTC_NOTIFY_EVT");
 				ESP_LOGI(GATTC_TAG, "event.NotificationLength=%d", event.NotificationLength);
 				ESP_LOGI(GATTC_TAG, "event.NotificationValue=0x%"PRIx32, event.NotificationValue);
+				if (button1Press == UINT32_MAX) {
+					button1Press = event.NotificationValue;
+					NVS_write_uint32(BUTTON1_PRESS, button1Press);
+				} else if (buttonRelease == UINT32_MAX) {
+					buttonRelease = event.NotificationValue;
+					NVS_write_uint32(BUTTON_RELEASE, buttonRelease);
+				} else if (button2Press == UINT32_MAX) {
+					if (event.NotificationValue != button1Press && 
+						event.NotificationValue != buttonRelease) {
+						button2Press = event.NotificationValue;
+						NVS_write_uint32(BUTTON2_PRESS, button2Press);
+					}
+				}
+				ESP_LOGI(GATTC_TAG, "button1Press=0x%"PRIx32, button1Press);
+				ESP_LOGI(GATTC_TAG, "button2Press=0x%"PRIx32, button2Press);
+				ESP_LOGI(GATTC_TAG, "buttonRelease=0x%"PRIx32, buttonRelease);
 			}
 		}
 
