@@ -22,6 +22,7 @@ There is a small power switch on the right side of the main unit.
 When you turn on the power, it will wait for pairing.   
 When pairing with ESP32 is completed, an event will be notified according to the button.   
 The power will turn off automatically if there is no operation for a certain period of time.   
+The length of time that pairing lasts varies depending on the device.   
 This is to prevent battery consumption.   
 If you turn the power off and then on again, it will wait for pairing again.   
 
