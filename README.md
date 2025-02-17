@@ -74,7 +74,7 @@ If you turn the power off and then on again, it will wait for pairing again.
 -  Remote device address   
 	Each device has a unique Remote device address.   
 	But I don't know how to use this address effectively.   
-	If we can fix the pairing partner, each ESP32 can be paired with each partner.   
+	If we can fix the pairing partner, we can pair each ESP32 with a specific device.   
 	```
 	I (3432) GATT_CLIENT: AB Shutter3
 	I (3432) GATT_CLIENT: Device found AB Shutter3
