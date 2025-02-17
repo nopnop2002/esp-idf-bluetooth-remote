@@ -72,7 +72,8 @@ If you turn the power off and then on again, it will wait for pairing again.
 	```
 
 Each device has a unique Remote device address.   
-This allows you to communicate with specific devices.   
+I think you can use this to communicate with specific devices.   
+But I don't know how.   
 ```
 I (3432) GATT_CLIENT: AB Shutter3
 I (3432) GATT_CLIENT: Device found AB Shutter3
