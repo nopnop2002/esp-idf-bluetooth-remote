@@ -124,3 +124,9 @@ This allows you to find out which button was pressed in other projects.
 - button release   
  The NVS key is ```AB_RELEASE``` and the NVS value type is uint32_t.   
 
+This is one example:   
+```
+I (23963) GATT_CLIENT: button1Press=0x100
+I (23963) GATT_CLIENT: button2Press=0x200
+I (23973) GATT_CLIENT: buttonRelease=0x0
+```
