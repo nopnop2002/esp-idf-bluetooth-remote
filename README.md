@@ -71,37 +71,38 @@ If you turn the power off and then on again, it will wait for pairing again.
 	I (2473338) GATT_CLIENT: event.NotificationValue=0x0
 	```
 
-Each device has a unique Remote device address.   
-I think you can use this to communicate with specific devices.   
-But I don't know how.   
-```
-I (3432) GATT_CLIENT: AB Shutter3
-I (3432) GATT_CLIENT: Device found AB Shutter3
-I (5032) GATT_CLIENT: Connected, conn_id 0, remote ff:ff:11:94:a8:63
+-  Remote device address   
+	Each device has a unique Remote device address.   
+	I think you can use this to communicate with specific devices.   
+	But I don't know how.   
+	```
+	I (3432) GATT_CLIENT: AB Shutter3
+	I (3432) GATT_CLIENT: Device found AB Shutter3
+	I (5032) GATT_CLIENT: Connected, conn_id 0, remote ff:ff:11:94:a8:63
 
 
-I (13732) GATT_CLIENT: AB Shutter3
-I (13732) GATT_CLIENT: Device found AB Shutter3
-I (14202) GATT_CLIENT: Connected, conn_id 0, remote 2b:80:3c:28:ac:1a
+	I (13732) GATT_CLIENT: AB Shutter3
+	I (13732) GATT_CLIENT: Device found AB Shutter3
+	I (14202) GATT_CLIENT: Connected, conn_id 0, remote 2b:80:3c:28:ac:1a
 
 
-I (5522) GATT_CLIENT: AB Shutter3
-I (5522) GATT_CLIENT: Device found AB Shutter3
-I (5632) GATT_CLIENT: Connected, conn_id 0, remote 2a:07:98:03:91:d5
+	I (5522) GATT_CLIENT: AB Shutter3
+	I (5522) GATT_CLIENT: Device found AB Shutter3
+	I (5632) GATT_CLIENT: Connected, conn_id 0, remote 2a:07:98:03:91:d5
 
 
-I (3168) GATT_CLIENT: AB Shutter3
-I (3168) GATT_CLIENT: Device found AB Shutter3
-I (3268) GATT_CLIENT: Connected, conn_id 0, remote 2a:07:98:03:fc:55
-```
+	I (3168) GATT_CLIENT: AB Shutter3
+	I (3168) GATT_CLIENT: Device found AB Shutter3
+	I (3268) GATT_CLIENT: Connected, conn_id 0, remote 2a:07:98:03:fc:55
+	```
 
-We can use multiple devices if we can communicate with a specific device.   
-```
-ESP32#1 --- Remote Device ff:ff:11:94:a8:63
-ESP32#2 --- Remote Device 2b:80:3c:28:ac:1a
-ESP32#3 --- Remote Device 2a:07:98:03:91:d5
-ESP32#4 --- Remote Device 2a:07:98:03:fc:55
-```
+	We can use multiple devices if we can communicate with a specific device.   
+	```
+	ESP32#1 --- Remote Device ff:ff:11:94:a8:63
+	ESP32#2 --- Remote Device 2b:80:3c:28:ac:1a
+	ESP32#3 --- Remote Device 2a:07:98:03:91:d5
+	ESP32#4 --- Remote Device 2a:07:98:03:fc:55
+	```
 
 
 # Software requirements
