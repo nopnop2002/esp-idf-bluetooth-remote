@@ -127,7 +127,10 @@ By comparing the NVS value with the value reported by the device, we can tell wh
 
 This is one example:   
 ```
-I (23963) GATT_CLIENT: button1Press=0x100
-I (23963) GATT_CLIENT: button2Press=0x200
-I (23973) GATT_CLIENT: buttonRelease=0x0
+W (174663) GATT_CLIENT: ESP_GATTC_NOTIFY_EVT
+I (174673) GATT_CLIENT: event.NotificationLength=2
+I (174673) GATT_CLIENT: event.NotificationValue=0x0
+I (174683) GATT_CLIENT: button1Press=0x100
+I (174693) GATT_CLIENT: button2Press=0x200
+I (174693) GATT_CLIENT: buttonRelease=0x0
 ```
